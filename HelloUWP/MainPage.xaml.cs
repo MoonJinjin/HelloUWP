@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,9 +28,13 @@ namespace HelloUWP
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            var myDlg = new MessageDialog("안녕하세요");
+            myDlg.Commands.Add(new UICommand("예"));
+            myDlg.Commands.Add(new UICommand("아니요"));
+            myDlg.Commands.Add(new UICommand("탈출"));
+            await myDlg.ShowAsync();
         }
     }
 }
